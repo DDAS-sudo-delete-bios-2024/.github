@@ -12,6 +12,8 @@ Before diving into the solution, we define two high-level components that a pote
 
 2. **Serving the File**: Now that the duplicate file has been detected, we will also want to serve the user the file from somewhere within the subnet as someone obviously already has it. Detection alone will serve no purpose as the user still needs the file and it has to be given it to him/her.
 
+![Components](./architecture-diagrams/components.png)
+
 ## **Solution**
 
 Now we propose the solution to both the above tasks. The solution will contain first contain architecture details and then implementation level details (as in the tech stack etc).
@@ -57,6 +59,15 @@ Step 2: If no match found, search for the hash of the file
 
 This method helps detect both same-site and cross-site duplicate downloads.
 
+
+* Single site duplicate detection
+![Single Site duplication detection](./architecture-diagrams/single-site-duplicate-detection.png)
+
+
+* Cross site duplicate detection
+![Cross Site duplication detection](./architecture-diagrams/cross-site-duplicate-detection.png)
+
+
 ## 2. Serving Duplicate File
 
 Alright, so the daemon and database are in place, but the system will never be complete if we don't provide a mechanism to also serve the user the duplicate file. Otherwise, the user will still have to download the file after receiving the alert. We could potentially give the user's private IP address, but this comes with several issues:
@@ -96,6 +107,10 @@ The backend can be split into three parts:
 - **Web server (for the local server)**: To provide services effectively, we use the **Apache web server**, a popular and easy-to-set-up choice for this purpose.
 - **Hashing algorithm**: We use the **SHA256** algorithm for file verification.
 
+---
+
+### Technologies used in a nutshell
+
 <p align="center">
   <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python" />
   <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript" />
@@ -111,7 +126,14 @@ The backend can be split into three parts:
   <img src="https://img.icons8.com/color/48/000000/chrome.png" alt="Chrome Extension API" />
   <img src="https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/external-computer-networking-digital-economy-business-flatart-icons-outline-flatarticons.png" alt="Computer Networking"/>
 </p>
-![alt text](image.png)
+
+---
+
+
+* Overall Architecture is as shown below
+
+![Overall Architecture](./architecture-diagrams/architecture1.png)
+
 
 ## Other Considerations
 
